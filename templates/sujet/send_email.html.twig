@@ -1,0 +1,8 @@
+<h1>Bonjour {{sujet.authors.firstname}}</h1>
+<p>Un utilisateur a répondu à un de vos sujet : {{sujet.titre}}</p>
+<p>En répondant : {{comment.content}}</p>
+<a href="{{absolute_url(path('show_sujet', {'titrecategory': sujet.category.slug,'slug': sujet.slug}))}}">Voir le sujet</a>
+<br>
+<a href="{{ absolute_url(path('desabonner', {"id": sujetID, 'token': registrationToken})) }}">
+    Ne plus être averti des prochaines réponses
+    </a>

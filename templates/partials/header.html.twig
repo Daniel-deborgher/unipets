@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid" style="background-color: #97BC57 !important;">
+  
+    <a class="navbar-brand" href="{{ path('home')}}"><img src="{{asset('images/3.png')}}" alt="Image d'accueil" style="height:100px; width: 180px; display:block; margin:0 auto; display:inline;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      
+      <ul class="nav-top-pets row" style="margin-left:auto;">
+        <li class="col-md-4 col-xs-4 icon-dog">
+          <a href="{{ path('show_reptiles')}}" class="lien-header mx-3">
+            <div class="icon-container">
+              <img alt="Reptiles" src="{{asset('images/reph.png')}}" style="width:35px; height:35px;">
+            </div>
+          {% if app.request.attributes.get('_route') == 'show_reptiles' %}
+            <span class="couleur">Reptiles</span>
+          {% else %}
+            <span>Reptiles</span> 
+          {% endif %}
+          
+          </a>
+        </li>
+        <li class="col-md-4 col-xs-4 icon-cat">
+          <a href="{{ path('show_oiseaux')}}" class="lien-header mx-3">
+            <div class="icon-container">
+              <img alt="Oiseaux" src="{{asset('images/oih.png')}}"  style="width:35px; height:35px;">
+            </div>
+            {% if app.request.attributes.get('_route') == 'show_oiseaux' %}
+            <span class="couleur">Oiseaux</span>
+          {% else %}
+            <span>Oiseaux</span> 
+          {% endif %}
+          </a>
+        </li>
+        <li class="col-md-4 col-xs-4 icon-rodent">
+          <a href="{{ path('show_rongeurs')}}" class="lien-header mx-3">
+            <div class="icon-container">
+              <img alt="Rongeurs" src="{{asset('images/rongh.png')}}" style="width:35px; height:35px;">
+              
+            </div>
+            {% if app.request.attributes.get('_route') == 'show_rongeurs' %}
+            <span class="couleur">Rongeurs</span>
+          {% else %}
+            <span>Rongeurs</span> 
+          {% endif %}
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+    {% if app.user %}
+
+      <li class="nav-item dropdowntext-center ">
+        <a href="#" class="nav-link active dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink">
+        {% if app.user.picture %}
+          <img src="{{ asset("images/" ~ app.user.picture) }}" class="avatar avatar-mini">
+        {% else %}
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTMgNTMiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUzIDUzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8cGF0aCBzdHlsZT0iZmlsbDojRTdFQ0VEOyIgZD0iTTE4LjYxMyw0MS41NTJsLTcuOTA3LDQuMzEzYy0wLjQ2NCwwLjI1My0wLjg4MSwwLjU2NC0xLjI2OSwwLjkwM0MxNC4wNDcsNTAuNjU1LDE5Ljk5OCw1MywyNi41LDUzDQoJYzYuNDU0LDAsMTIuMzY3LTIuMzEsMTYuOTY0LTYuMTQ0Yy0wLjQyNC0wLjM1OC0wLjg4NC0wLjY4LTEuMzk0LTAuOTM0bC04LjQ2Ny00LjIzM2MtMS4wOTQtMC41NDctMS43ODUtMS42NjUtMS43ODUtMi44ODh2LTMuMzIyDQoJYzAuMjM4LTAuMjcxLDAuNTEtMC42MTksMC44MDEtMS4wM2MxLjE1NC0xLjYzLDIuMDI3LTMuNDIzLDIuNjMyLTUuMzA0YzEuMDg2LTAuMzM1LDEuODg2LTEuMzM4LDEuODg2LTIuNTN2LTMuNTQ2DQoJYzAtMC43OC0wLjM0Ny0xLjQ3Ny0wLjg4Ni0xLjk2NXYtNS4xMjZjMCwwLDEuMDUzLTcuOTc3LTkuNzUtNy45NzdzLTkuNzUsNy45NzctOS43NSw3Ljk3N3Y1LjEyNg0KCWMtMC41NCwwLjQ4OC0wLjg4NiwxLjE4NS0wLjg4NiwxLjk2NXYzLjU0NmMwLDAuOTM0LDAuNDkxLDEuNzU2LDEuMjI2LDIuMjMxYzAuODg2LDMuODU3LDMuMjA2LDYuNjMzLDMuMjA2LDYuNjMzdjMuMjQNCglDMjAuMjk2LDM5Ljg5OSwxOS42NSw0MC45ODYsMTguNjEzLDQxLjU1MnoiLz4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1NTYwODA7IiBkPSJNMjYuOTUzLDAuMDA0QzEyLjMyLTAuMjQ2LDAuMjU0LDExLjQxNCwwLjAwNCwyNi4wNDdDLTAuMTM4LDM0LjM0NCwzLjU2LDQxLjgwMSw5LjQ0OCw0Ni43Ng0KCQljMC4zODUtMC4zMzYsMC43OTgtMC42NDQsMS4yNTctMC44OTRsNy45MDctNC4zMTNjMS4wMzctMC41NjYsMS42ODMtMS42NTMsMS42ODMtMi44MzV2LTMuMjRjMCwwLTIuMzIxLTIuNzc2LTMuMjA2LTYuNjMzDQoJCWMtMC43MzQtMC40NzUtMS4yMjYtMS4yOTYtMS4yMjYtMi4yMzF2LTMuNTQ2YzAtMC43OCwwLjM0Ny0xLjQ3NywwLjg4Ni0xLjk2NXYtNS4xMjZjMCwwLTEuMDUzLTcuOTc3LDkuNzUtNy45NzcNCgkJczkuNzUsNy45NzcsOS43NSw3Ljk3N3Y1LjEyNmMwLjU0LDAuNDg4LDAuODg2LDEuMTg1LDAuODg2LDEuOTY1djMuNTQ2YzAsMS4xOTItMC44LDIuMTk1LTEuODg2LDIuNTMNCgkJYy0wLjYwNSwxLjg4MS0xLjQ3OCwzLjY3NC0yLjYzMiw1LjMwNGMtMC4yOTEsMC40MTEtMC41NjMsMC43NTktMC44MDEsMS4wM1YzOC44YzAsMS4yMjMsMC42OTEsMi4zNDIsMS43ODUsMi44ODhsOC40NjcsNC4yMzMNCgkJYzAuNTA4LDAuMjU0LDAuOTY3LDAuNTc1LDEuMzksMC45MzJjNS43MS00Ljc2Miw5LjM5OS0xMS44ODIsOS41MzYtMTkuOUM1My4yNDYsMTIuMzIsNDEuNTg3LDAuMjU0LDI2Ljk1MywwLjAwNHoiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" alt="" class="avatar avatar-mini">
+        {% endif %}
+          {{app.user.firstName}} {{app.user.lastName}}        
+        </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
+            {% if is_granted('ROLE_ADMIN') %}
+              <a href="{{path('admin_dashboard')}}" class="dropdown-item">Administration</a>   
+              <div class="dropdown-divider"></div>
+            {% endif %}
+            <a href="{{ path('add_sujet')}}" class="dropdown-item">Créer un sujet</a>
+            
+            <a href="{{ path('my_sujets')}}" class="dropdown-item">Voir mes sujets</a>
+            <div class="dropdown-divider"></div>
+            <a href="{{ path('edit_profile')}}" class="dropdown-item">Modifier mon profil</a>
+            <a href="{{ path('account_updatePassword')}}" class="dropdown-item">Modifier votre mot de passe</a>
+            <a href="{{ path('edit_avatar')}}" class="dropdown-item">Modifier mon avatar</a>
+            <div class="dropdown-divider"></div>
+            <a href="{{ path('account_logout')}}" class="dropdown-item">Déconnexion</a>
+          </div>
+      </li>
+    {% else %}
+
+      <li class="nav-item">
+        <a href="{{ path('account_register')}}" class=
+          {% if app.request.attributes.get('_route') == 'account_register' %}
+            "nav-link active" 
+          {% else %}
+            "nav-link" 
+          {% endif %}
+        >Inscription</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="{{ path('account_login')}}" class=
+          {% if app.request.attributes.get('_route') == 'account_login' %}
+            "nav-link active" 
+          {% else %}
+            "nav-link" 
+          {% endif %}
+          >Connexion</a>
+      </li>
+
+    {% endif %}
+    <form class="form-inline my-2 my-lg-0"  action= {{ path("recherche")}}>
+      <input class="form-control form-rechercher mr-2" name="recherche" type="search" placeholder="Rechercher ..." aria-label="Search" style:"width:auto " id="recherchez" maxlength="30" >
+      <button class="btn button-search my-2 my-sm-0" type="submit"><i class="fa fa-search blue-color "></i></button>
+    </form>
+    </ul>
+    
+      
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,38 @@
+{% extends "admin/base.html.twig" %}
+{% block meta_description %}
+         <meta name="description" content="Page d'administration des articles" />   
+        {% endblock %}
+{% block title %}Administration des articles{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+    {% include "partials/flash.html.twig" %}
+        <h1 class="py-5 text-center">Gestion des articles</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Auteur</th>
+                    <th>Titre</th>
+                    <th>Catégorie</th>
+                    <th class="text-center">Nombre de commentaire</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for sujet in sujets %}
+                <tr>
+                    <td>{{sujet.authors.firstname}} {{sujet.authors.lastname}}</td>
+                    <td>{{sujet.titre}}</td>
+                    <td>{{sujet.category.titre}}</td>
+                    <td class="text-center">{{sujet.comments|length}}</td>
+                    <td>
+                        <a href="{{path('admin_sujet_edit', {'slug': sujet.slug})}}" class="btn btn-registration mt-0"><i class="fas fa-edit"></i></a>
+                        <a href="{{path('admin_sujet_delete', {'id': sujet.id})}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block meta_description %}
+         <meta name="description" content="Page de modification de mon profil" />   
+        {% endblock %}
+{% block title %}Modification du profil{% endblock %}
+{% block body %}
+    <div class="container tablet">
+        {% include "partials/flash.html.twig" %}
+        <div class="p-3">
+            <h2 class="text-center pt-3">Modification du profil</h2>
+            
+            {{form_start(form)}}
+           {{form_row(form.firstName, {
+            'attr': {
+                'placeholder' : "Votre prenom d'utilisateur",
+                'value' : app.user.firstName
+            }
+        })}}
+        {{form_row(form.lastName, {
+            'attr': {
+                'placeholder' : "Votre nom d'utilisateur",
+                'value' : app.user.lastName
+            }
+        })}}
+           {{form_widget(form)}}
+           
+                <div class="row justify-content-center">
+                    <div class="col pt-3">
+                        <button type="submit" class="btn btn-success d-block mx-auto my-0">Enregistrer les modifications</button>
+                    </div> 
+            </div>
+        </div>
+        {{form_end(form)}}
+    </div>  
+{% endblock %}

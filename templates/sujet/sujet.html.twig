@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos sujets{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+                <h1 class="py-3"><b>Nos sujets</b></h1> 
+                <div class="row">
+                    {% for sujet in sujets %}
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 col-xl-4 my-3">
+                        <div class="card mx-auto" style="width: 18rem;">
+                            <img class="card-img-top" src="{{ asset("images/" ~ sujet.image) }}" alt="Card image cap" 
+                            style="height:200px; width=100px; display:block">
+                            <div class="card-body">
+                                    <h5 class="card-title red">{{sujet.titre}}</h5>
+                                    <p class="card-text">{{sujet.contenu}}</p>
+                            </div>
+                            <a href="{{path ('show_sujet', {'slug': sujet.slug}) }}" class="btn btn-tarif">Voir plus</a>  
+                            </div>
+                        </div>    
+                    {% endfor %}
+                </div>
+            </div> 
+            {% endblock %}

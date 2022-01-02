@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Page non trouvée
+{% endblock %}
+
+{% block body %}
+    <div class="container">  
+            <h1 class="text-center pt-3">Oups ! La page que vous recherchez n'existe pas !</h1>
+            <p class="text-center pt-3"> C'est peut être une erreur de notre part. Pas de soucis, vous pouvez retourner à l'accueil si vous le souhaitez.</p>
+            <img src="{{asset('images/pigeon.jpg')}}" alt="image triste" class="d-block my-0 mx-auto py-4 w-75">
+               <p class="text-center"> <a href="{{path('home')}}" class="btn btn-success">Retour à l'accueil</a> </p>
+    </div>
+{% endblock %}

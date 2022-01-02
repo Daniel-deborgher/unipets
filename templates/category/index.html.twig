@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+<div class="container">
+{% include "partials/flash.html.twig" %}
+        <h1 class="text-center py-3">Vous souhaitez ajouter une catégorie ?</h1>
+        <div class="div-registration">
+            {{ form_start(form) }}
+            {{form_widget(form)}}
+            <div class="row justify-content-center pb-3 inscription">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary d-block mx-auto my-3">Ajouter la catégorie</button>
+                </div>
+            </div>
+            {{form_end(form)}}
+        </div>
+    </div>
+{% endblock %}

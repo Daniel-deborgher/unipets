@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block title %}Erreur interne{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="py-4 px-3">  
+        <h1 class="text-center pt-3">Erreur interne détectée</h1>
+            <p class="text-center pt-3"> 
+                Notre équipe travaille sur ce soucis.
+            </p> 
+        <img src="{{asset('images/hamster.gif')}}" alt="hamster travail" class="d-block my-0 mx-auto py-4 w-75">
+        <p class="text-center"> <a href="{{path('home')}}" class="btn btn-success">Retour à l'accueil</a> </p> 
+        </div>
+    </div>
+{% endblock %}
